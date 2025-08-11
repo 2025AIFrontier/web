@@ -28,6 +28,8 @@ const RefreshCw = ({ size = 16, className = '' }) => (<svg xmlns="http://www.w3.
 const AlertCircle = ({ size = 48, className = '' }) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>);
 const ChevronsDown = ({ size = 20, className = '' }) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m7 13 5 5 5-5"/><path d="m7 6 5 5 5-5"/></svg>);
 const LayoutDashboard = ({ size = 20, className = '' }) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>);
+const Bot = ({ size = 20, className = '' }) => (<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M12 8V4H8"/><rect x="4" y="12" width="16" height="8" rx="2"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M12 18v-2"/><path d="M9 16h6"/></svg>);
+
 
 
 // ==================================
@@ -144,6 +146,7 @@ export const ExchangePage: React.FC = () => {
         <>
             <ExchangeTopSection rawData={rawData} />
             <AIAnalysisSection rawData={rawData} />
+
         </>
     );
   };

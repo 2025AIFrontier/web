@@ -27,15 +27,15 @@ async function loadAllServiceConfigsFromDB() {
       services[item.subsection][item.key] = item.value;
     });
     
-    // web-api 필수 설정 확인
-    if (!services['web-api']) {
-      throw new Error('No web-api configuration found in database');
+    // main-web 필수 설정 확인
+    if (!services['main-web']) {
+      throw new Error('No main-web configuration found in database');
     }
     
     const requiredKeys = ['host', 'port', 'protocol'];
     for (const key of requiredKeys) {
-      if (!services['web-api'][key]) {
-        throw new Error(`Required web-api configuration '${key}' not found in database`);
+      if (!services['main-web'][key]) {
+        throw new Error(`Required main-web configuration '${key}' not found in database`);
       }
     }
     
@@ -54,7 +54,7 @@ async function main() {
   try {
     // DB에서 모든 서비스 설정 로드
     const services = await loadAllServiceConfigsFromDB();
-    const webConfig = services['web-api'];
+    const webConfig = services['main-web'];
     
     console.log(`🚀 Starting web server on ${webConfig.host}:${webConfig.port}`);
     

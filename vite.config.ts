@@ -27,7 +27,25 @@ export default defineConfig({
       ext: '.br',
       threshold: 1024,
       deleteOriginFile: false
-    })
+    }),
+    // Keep-Alive 플러그인 - nginx proxy_read_timeout 방지
+    {
+      name: 'nginx-keepalive',
+      configureServer(server) {
+        server.middlewares.use('/__keepalive', (req, res) => {
+          res.writeHead(200, {
+            'Content-Type': 'text/plain',
+            'Cache-Control': 'no-cache',
+          });
+          res.end('alive');
+        });
+        
+        // 30초마다 자동으로 heartbeat (선택사항)
+        // setInterval(() => {
+        //   console.log('💓 Keep-Alive heartbeat');
+        // }, 30000);
+      }
+    }
   ],
   
   // 환경변수 정의 (빌드 시 클라이언트에서 사용 가능)

@@ -21,7 +21,7 @@ export const config = typeof __APP_CONFIG__ !== 'undefined' ? {
   // 개발 시 fallback (런타임 설정)
   api: {
     baseUrl: 'http://localhost',
-    timeout: 30000,
+    timeout: 120000,  // 30초 → 120초로 변경 (테스트용)
     retries: 3,
   },
   

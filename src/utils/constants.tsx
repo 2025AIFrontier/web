@@ -8,7 +8,8 @@ export const MENU_ITEMS: MenuItem[] = [
     icon: <Home size={20} />,
     isDropdown: false
   },
-  {
+  // 조회 탭 다시 활성화 - 범인 찾기 테스트
+  ...(true ? [{
     id: 'inquiry',
     name: '조회',
     icon: <Search size={20} />,
@@ -38,8 +39,9 @@ export const MENU_ITEMS: MenuItem[] = [
         icon: <Truck size={18} />
       }
     ]
-  },
-  {
+  }] : []),
+  // 요청 탭 다시 활성화
+  ...(true ? [{
     id: 'request',
     name: '요청',
     icon: <Send size={20} />,
@@ -57,17 +59,19 @@ export const MENU_ITEMS: MenuItem[] = [
         tag: 'Frontier'
       },
     ]
-  },
-  {
+  }] : []),
+  // 달력 탭 다시 활성화
+  ...(true ? [{
     id: 'calendar',
     name: '달력',
     icon: <CalendarDays size={20} />,
     isDropdown: false
-  },
-  {
+  }] : []),
+  // 관리자 탭 다시 활성화
+  ...(true ? [{
     id: 'admin',
     name: '관리자',
     icon: <Settings size={20} />,
     isDropdown: false
-  }
+  }] : [])
 ];
