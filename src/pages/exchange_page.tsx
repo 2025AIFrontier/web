@@ -64,11 +64,11 @@ export const ExchangePage: React.FC = () => {
       }
       
       // --- API 통신 핵심 부분 ---
-      // nginx 프록시를 통한 Exchange API 호출
-      const apiUrl = __APP_CONFIG__.api.baseUrl;
+      // Exchange API 직접 호출
+      const exchangeApiUrl = __APP_CONFIG__.api.services['exchange-api'].url;
 
-      // 2. nginx 프록시 경로를 통해 `/api/exchange_db2api` 엔드포인트를 호출합니다.
-      const url = `${apiUrl}/api/exchange_db2api?days=14&format=web&_t=${Date.now()}`;
+      // Exchange API 직접 엔드포인트 호출
+      const url = `${exchangeApiUrl}/api/exchange_db2api?days=14&format=web&_t=${Date.now()}`;
       
       const response = await fetch(url);
       if (!response.ok) {
