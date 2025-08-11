@@ -9,6 +9,7 @@ export default defineConfig({
   server: {
     host: process.env.VITE_DEV_HOST || config.services.web.host,
     port: parseInt(process.env.VITE_DEV_PORT || config.services.web.port),
+    allowedHosts: ['localhost', '10.252.92.75', 'aipc.sec.samsung.net'],
     hmr: {
       host: process.env.VITE_ALLOW_HOST || 'localhost'
     },

@@ -13,7 +13,8 @@ class ApiClient {
     endpoint: string,
     options: RequestInit = {}
   ): Promise<ApiResponse<T>> {
-    const url = `${API_CONFIG.PROTOCOL}://${API_CONFIG.HOST}:${API_CONFIG.PORT}${endpoint}`;
+    // nginx 프록시를 통한 API 호출
+    const url = `${API_CONFIG.BASE_URL}${endpoint}`;
     
     const config: RequestInit = {
       ...options,

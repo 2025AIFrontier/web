@@ -64,15 +64,11 @@ export const ExchangePage: React.FC = () => {
       }
       
       // --- API 통신 핵심 부분 ---
-      // 1. .env 파일에 API 서버 주소를 설정해야 합니다.
-      //    (예: VITE_EXCHANGE_API_URL=http://localhost:5000)
-      const apiUrl = import.meta.env.VITE_EXCHANGE_API_URL;
-      if (!apiUrl) {
-        throw new Error("API URL이 설정되지 않았습니다. 프로젝트 루트의 .env 파일에 VITE_EXCHANGE_API_URL을 설정해주세요.");
-      }
+      // nginx 프록시를 통한 Exchange API 호출
+      const apiUrl = __APP_CONFIG__.api.baseUrl;
 
-      // 2. Python API의 `/exchange_db2api` 엔드포인트를 호출합니다.
-      const url = `${apiUrl}/exchange_db2api?days=14&format=web&_t=${Date.now()}`;
+      // 2. nginx 프록시 경로를 통해 `/api/exchange_db2api` 엔드포인트를 호출합니다.
+      const url = `${apiUrl}/api/exchange_db2api?days=14&format=web&_t=${Date.now()}`;
       
       const response = await fetch(url);
       if (!response.ok) {
