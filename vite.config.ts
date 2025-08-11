@@ -11,7 +11,9 @@ export default defineConfig({
     port: parseInt(process.env.VITE_DEV_PORT || config.services.web.port),
     allowedHosts: ['localhost', '10.252.92.75', 'aipc.sec.samsung.net'],
     hmr: {
-      host: process.env.VITE_ALLOW_HOST || 'localhost'
+      host: process.env.VITE_ALLOW_HOST || '0.0.0.0',
+      port: parseInt(process.env.VITE_HMR_PORT || '24678'),
+      clientPort: parseInt(process.env.VITE_HMR_CLIENT_PORT || config.services.web.port)
     },
     proxy: {
       '/postgrest': {
