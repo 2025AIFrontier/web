@@ -15,16 +15,27 @@ declare global {
   };
 }
 
+// 동적 API 설정 - 현재 브라우저 주소 기반
+const getApiBaseUrl = () => {
+  // 빌드타임 설정이 0.0.0.0인 경우 현재 브라우저 주소 사용
+  const buildTimeUrl = __APP_CONFIG__.api.baseUrl;
+  if (buildTimeUrl.includes('0.0.0.0')) {
+    // 외부 접근 시 현재 브라우저의 origin 사용
+    return window.location.origin;
+  }
+  return buildTimeUrl;
+};
+
 // API 설정 - nginx 프록시를 통한 통합 접근
 export const API_CONFIG = {
-  BASE_URL: __APP_CONFIG__.api.baseUrl,  // nginx 프록시 주소 사용
+  BASE_URL: getApiBaseUrl(),  // 동적 baseUrl 사용
   TIMEOUT: __APP_CONFIG__.api.timeout,
   RETRY_ATTEMPTS: 3
 };
 
 // Exchange API 전용 설정 - nginx 프록시 경로 사용
 export const EXCHANGE_API_CONFIG = {
-  BASE_URL: __APP_CONFIG__.api.baseUrl,  // nginx 프록시를 통해 접근
+  BASE_URL: getApiBaseUrl(),  // 동적 baseUrl 사용
   TIMEOUT: __APP_CONFIG__.api.timeout,
   RETRY_ATTEMPTS: 3
 };
