@@ -2,8 +2,8 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteCompression from 'vite-plugin-compression';
 
-// 환경설정 불러오기
-const config = require('../env.js');
+// DB에서 동적으로 로드된 설정 사용 (frontend-dev-server.js에서 환경변수로 전달)
+const config = JSON.parse(process.env.VITE_DB_CONFIG);
 
 export default defineConfig({
   server: {
@@ -55,7 +55,7 @@ export default defineConfig({
   define: {
     __APP_CONFIG__: JSON.stringify({
       api: {
-        baseUrl: `${config.services.nginx.protocol}://${config.services.nginx.host}:${config.services.nginx.port}`,
+        baseUrl: `http://localhost:80`,
         timeout: config.api.timeout,
       },
       services: {
