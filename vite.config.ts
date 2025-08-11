@@ -7,13 +7,13 @@ const config = JSON.parse(process.env.VITE_DB_CONFIG);
 
 export default defineConfig({
   server: {
-    host: process.env.VITE_DEV_HOST || config.services.web.host,
-    port: parseInt(process.env.VITE_DEV_PORT || config.services.web.port),
+    host: config.services.web.host,
+    port: parseInt(config.services.web.port),
     allowedHosts: ['localhost', '10.252.92.75', 'aipc.sec.samsung.net'],
     hmr: {
-      host: process.env.VITE_ALLOW_HOST || '0.0.0.0',
-      port: parseInt(process.env.VITE_HMR_PORT || '24678'),
-      clientPort: parseInt(process.env.VITE_HMR_CLIENT_PORT || config.services.web.port)
+      host: '127.0.0.1',
+      port: 24678,
+      clientPort: parseInt(config.services.web.port)
     },
     proxy: {
       '/postgrest': {
@@ -55,7 +55,7 @@ export default defineConfig({
   define: {
     __APP_CONFIG__: JSON.stringify({
       api: {
-        baseUrl: `http://localhost:80`,
+        baseUrl: `${config.services.nginx.protocol}://${config.services.nginx.host}:${config.services.nginx.port}`,
         timeout: config.api.timeout,
       },
       services: {
