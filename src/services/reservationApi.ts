@@ -18,27 +18,9 @@ declare const __APP_CONFIG__: {
   };
 };
 
-// 전역 설정에서 reservation-api 서비스 주소를 가져오는 함수
+// nginx 프록시를 통한 동적 API 주소 사용
 const getReservationApiBaseUrl = (): string => {
-  // 1차: window 객체에 저장된 런타임 설정 확인 (ConfigContext에서 설정)
-  const runtimeConfig = (window as any).__RUNTIME_CONFIG__;
-  if (runtimeConfig?.servicesConfig?.['reservation-api']) {
-    const config = runtimeConfig.servicesConfig['reservation-api'];
-    return `${config.protocol}://${config.host}:${config.port}/api`;
-  }
-  
-  // 2차: 빌드타임 설정의 환경변수 사용
-  if (typeof __APP_CONFIG__ !== 'undefined') {
-    // env.js 기반 환경변수에서 reservation-api 설정 추출
-    const envConfig = (window as any).__ENV_CONFIG__;
-    if (envConfig?.services?.reservationApi) {
-      const config = envConfig.services.reservationApi;
-      return `${config.protocol}://${config.host}:${config.port}/api`;
-    }
-  }
-  
-  // 환경변수를 찾을 수 없는 경우 오류 발생
-  throw new Error('reservation-api 설정을 찾을 수 없습니다. 환경변수를 확인해주세요.');
+  return `${window.location.origin}/api`;
 };
 
 // axios 인스턴스를 동적으로 생성하는 함수

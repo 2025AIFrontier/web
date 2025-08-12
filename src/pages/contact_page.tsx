@@ -75,11 +75,8 @@ const ContactPage: React.FC = () => {
     if (params?.departmentname) queryParams.append('departmentname', params.departmentname);
     if (params?.companyname) queryParams.append('companyname', params.companyname);
 
-    // 환경변수에서 Employee API URL 가져오기
-    const baseUrl = import.meta.env.VITE_EMPLOYEE_API_URL;
-    if (!baseUrl) {
-      throw new Error('Employee API URL 환경변수를 찾을 수 없습니다 (VITE_EMPLOYEE_API_URL)');
-    }
+    // nginx 프록시를 통한 동적 baseUrl 사용
+    const baseUrl = `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':' + window.location.port : ''}`;
     const contactApiUrl = '/api/contacts';
     const url = `${baseUrl}${contactApiUrl}${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
     
