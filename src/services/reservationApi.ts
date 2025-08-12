@@ -59,14 +59,23 @@ const getApiClient = () => {
  */
 const createReservation = async (reservation: NewReservation): Promise<{ success: boolean; data?: Reservation; message?: string }> => {
   try {
-    const apiClient = getApiClient();
-    const response = await apiClient.post<{ success: boolean; data: Reservation; message: string }>('/reservations', reservation);
-    return response.data;
-  } catch (error) {
-    if (axios.isAxiosError(error) && error.response) {
-      return { success: false, message: error.response.data.message || '예약 생성에 실패했습니다.' };
+    // Nginx 라우팅을 통한 직접 호출로 변경 (포트 80으로 통일)
+    const baseUrl = `${window.location.protocol}//${window.location.hostname}`;
+    const response = await fetch(`${baseUrl}/api/reservation_create`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(reservation)
+    });
+    
+    if (!response.ok) {
+      const errorData = await response.json();
+      return { success: false, message: errorData.message || '예약 생성에 실패했습니다.' };
     }
-    return { success: false, message: '알 수 없는 오류가 발생했습니다.' };
+    
+    return await response.json();
+  } catch (error) {
+    console.error('예약 생성 오류:', error);
+    return { success: false, message: '네트워크 오류가 발생했습니다.' };
   }
 };
 

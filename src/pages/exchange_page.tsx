@@ -64,11 +64,9 @@ export const ExchangePage: React.FC = () => {
       }
       
       // --- API 통신 핵심 부분 ---
-      // Exchange API 직접 호출
-      const exchangeApiUrl = __APP_CONFIG__.api.services['exchange-api'].url;
-
-      // Exchange API 직접 엔드포인트 호출
-      const url = `${exchangeApiUrl}/api/exchange_db2api?days=14&format=web&_t=${Date.now()}`;
+      // Nginx 라우팅을 통한 Exchange API 호출 (포트 80으로 통일)
+      const baseUrl = `${window.location.protocol}//${window.location.hostname}`;
+      const url = `${baseUrl}/api/exchange_db2api?days=14&format=web&_t=${Date.now()}`;
       
       const response = await fetch(url);
       if (!response.ok) {
@@ -77,7 +75,16 @@ export const ExchangePage: React.FC = () => {
         throw new Error(`API 서버 에러: ${response.status} - ${errorText}`);
       }
       
-      const result: ApiResponse = await response.json();
+      // 디버깅을 위해 응답 내용을 먼저 텍스트로 확인
+      const responseText = await response.text();
+      console.log('API 응답 내용:', responseText);
+      
+      let result: ApiResponse;
+      try {
+        result = JSON.parse(responseText);
+      } catch (jsonError) {
+        throw new Error(`JSON 파싱 오류: ${jsonError.message}. 응답 내용: ${responseText.slice(0, 500)}`);
+      }
 
       // 3. API 응답 구조에 맞춰 데이터를 처리합니다.
       if (result && result.success) {

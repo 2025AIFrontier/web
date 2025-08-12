@@ -101,18 +101,33 @@ const ReservationModal: React.FC<ReservationModalProps> = ({
       case 'afternoon': presetTimes = ['13:00', '14:00', '15:00', '16:00','17:00']; break;
       case 'allday': presetTimes = timeSlots; break;
     }
+    
+    // 각 차량별 예약 가능 여부 확인
     const isCar1Available = !presetTimes.some(time => reservedSlotsCar1.has(time));
     const isCar2Available = !presetTimes.some(time => reservedSlotsCar2.has(time));
+    
     let carAssigned = false;
-    if (isCar1Available) {
-        setSelectedCar(1);
-        setSelectedTimes(presetTimes);
-        carAssigned = true;
+    let selectedCarId = null;
+    
+    // 스마트 할당: 예약이 더 많은 차량을 우선 선택
+    if (isCar1Available && isCar2Available) {
+      // 둘 다 가능할 때: 예약이 더 많은 차량 우선 선택 (로드밸런싱)
+      const car1ReservationCount = reservedSlotsCar1.size;
+      const car2ReservationCount = reservedSlotsCar2.size;
+      
+      selectedCarId = car1ReservationCount >= car2ReservationCount ? 1 : 2;
+    } else if (isCar1Available) {
+      selectedCarId = 1;
     } else if (isCar2Available) {
-        setSelectedCar(2);
-        setSelectedTimes(presetTimes);
-        carAssigned = true;
+      selectedCarId = 2;
     }
+    
+    if (selectedCarId) {
+      setSelectedCar(selectedCarId);
+      setSelectedTimes(presetTimes);
+      carAssigned = true;
+    }
+    
     if (carAssigned) {
       setSelectedPreset(preset);
     } else {

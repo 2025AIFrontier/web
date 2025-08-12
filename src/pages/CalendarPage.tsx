@@ -92,20 +92,10 @@ const CalendarPage: React.FC<CalendarPageProps> = () => {
       });
     }
     
-    if (todayPosition >= 0) {
-      const todayRow = Math.floor(todayPosition / 7);
-      const todayCol = todayPosition % 7;
-      
-      days.forEach((day, index) => {
-        const currentRow = Math.floor(index / 7);
-        const currentCol = index % 7;
-        day.isPast = (currentRow < todayRow) || (currentRow === todayRow && currentCol < todayCol);
-      });
-    } else {
-      days.forEach(day => {
-        day.isPast = false;
-      });
-    }
+    // 해당 월의 모든 날짜를 활성화 (과거/미래 구분 없이)
+    days.forEach(day => {
+      day.isPast = false;
+    });
     
     return days;
   };
@@ -485,24 +475,26 @@ const CalendarPage: React.FC<CalendarPageProps> = () => {
 
   const fetchReservations = async () => {
     try {
+      // 해당 월 1일에서 -7일, 말일에서 +7일
       const firstDay = new Date(currentYear, currentMonth, 1);
       const lastDay = new Date(currentYear, currentMonth + 1, 0);
       
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      
-      const startDate = firstDay > today ? firstDay : today;
+      // ±7일 확장
+      const startDate = new Date(firstDay);
+      startDate.setDate(startDate.getDate() - 7);
+      const endDate = new Date(lastDay);
+      endDate.setDate(endDate.getDate() + 7);
       
       const startDateStr = startDate.toISOString().split('T')[0];
-      const endDateStr = lastDay.toISOString().split('T')[0];
+      const endDateStr = endDate.toISOString().split('T')[0];
       
-      const query = `time=gte.${startDateStr}&time=lte.${endDateStr}T23:59:59&type=eq.car&order=time.asc`;
-      const response = await fetch(`/postgrest/reservation_table?${query}`);
+      const baseUrl = `${window.location.protocol}//${window.location.hostname}`;
+      const response = await fetch(`${baseUrl}/api/reservation_calendar?date_from=${startDateStr}&date_to=${endDateStr}T23:59:59&type=car`);
       
       if (response.ok) {
-        const data = await response.json();
+        const result = await response.json();
+        const data = result.success ? result.data : [];
         setReservations(data);
-        console.log(`📅 ${currentYear}년 ${currentMonth + 1}월 예약 데이터 ${data.length}건 로드 (${startDateStr} ~ ${endDateStr})`);
       }
     } catch (error) {
       console.error('예약 데이터 조회 실패:', error);
@@ -592,15 +584,6 @@ const CalendarPage: React.FC<CalendarPageProps> = () => {
         {/* ★★★ 툴팁 렌더링 호출 ★★★ */}
         {renderTooltip()}
 
-        <div className="mt-8 text-center">
-          <div className="bg-white rounded-xl shadow-lg p-6 max-w-2xl mx-auto">
-            <div className="flex items-center justify-center space-x-8 text-sm">
-              <div className="flex items-center space-x-2"><div className="w-4 h-4 bg-blue-500 rounded"></div><span className="text-gray-600">오늘</span></div>
-              <div className="flex items-center space-x-2"><div className="w-4 h-4 bg-red-500 rounded"></div><span className="text-gray-600">일요일</span></div>
-              <div className="flex items-center space-x-2"><div className="w-4 h-4 bg-blue-400 rounded"></div><span className="text-gray-600">토요일</span></div>
-            </div>
-          </div>
-        </div>
 
         {isModalOpen && selectedDate && (
           <>
@@ -649,7 +632,7 @@ const CalendarPage: React.FC<CalendarPageProps> = () => {
                   </div>
                   <div className="flex gap-3">
                     <button onClick={handleModalClose} className="flex-1 py-3 px-4 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors duration-200">닫기</button>
-                    <button className="flex-1 py-3 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200" onClick={() => { console.log('선택된 날짜:', selectedDate); handleModalClose(); }}>확인</button>
+                    <button className="flex-1 py-3 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200" onClick={handleModalClose}>확인</button>
                   </div>
                 </div>
               </div>
