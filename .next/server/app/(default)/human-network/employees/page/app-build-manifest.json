@@ -1,0 +1,31 @@
+{
+  "pages": {
+    "/(default)/human-network/employees/page": [
+      "static/chunks/[root of the server]__20dcdc._.css",
+      "static/chunks/node_modules_bc782e._.js",
+      "static/chunks/app_078de0._.js",
+      "static/chunks/app_layout_tsx_61af54._.js",
+      "static/chunks/_50769c._.js",
+      "static/chunks/node_modules_4ad3ba._.js",
+      "static/chunks/app_not-found_tsx_65166f._.js",
+      "static/chunks/_3db654._.js",
+      "static/chunks/node_modules_next_e5de23._.js",
+      "static/chunks/node_modules_@headlessui_react_dist_3f181d._.js",
+      "static/chunks/node_modules_@floating-ui_react_dist_c1a64d._.js",
+      "static/chunks/node_modules_date-fns_d64ed1._.js",
+      "static/chunks/node_modules_react-day-picker_dist_esm_e2f663._.js",
+      "static/chunks/node_modules_32245a._.js",
+      "static/chunks/app_(default)_layout_tsx_65166f._.js",
+      "static/chunks/_a3ab57._.js",
+      "static/chunks/app_(default)_human-network_employees_page_tsx_3177f2._.js",
+      "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js",
+      "static/chunks/node_modules_next_dist_compiled_107ce8._.js",
+      "static/chunks/node_modules_next_dist_client_523921._.js",
+      "static/chunks/node_modules_next_dist_4bb10e._.js",
+      "static/chunks/node_modules_@swc_helpers_cjs_00636a._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_d0a96d._.js",
+      "static/chunks/_e69f0d._.js",
+      "static/chunks/_d95469._.js"
+    ]
+  }
+}
