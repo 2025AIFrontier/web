@@ -13,6 +13,10 @@ dist/
 .vite/
 dist-ssr/
 
+# Next.js
+.next/
+out/
+
 # 로컬 환경 파일
 .env
 .env.local
