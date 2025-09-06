@@ -29,7 +29,7 @@ export default function Onboarding01() {
             <div className="px-4 py-8">
               <div className="max-w-md mx-auto">
 
-                <h1 className="text-3xl text-gray-800 dark:text-gray-100 font-bold mb-6">Tell us what's your situation</h1>
+                <h1 className="text-3xl text-gray-800 dark:text-gray-100 font-bold mb-6">부서를 선택하세요</h1>
                 {/* Form */}
                 <form>
                   <div className="space-y-3 mb-8">
@@ -41,7 +41,7 @@ export default function Onboarding01() {
                           <path className="text-violet-300" d="m11 12.588-9-5V18a1 1 0 0 0 .514.874L11 23.588v-11Z" />
                           <path className="text-violet-200" d="M13 12.588v11l8.486-4.714A1 1 0 0 0 22 18V7.589l-9 4.999Z" />
                         </svg>
-                        <span>I have a company</span>
+                        <span>구매</span>
                       </div>
                       <div className="absolute inset-0 border-2 border-transparent peer-checked:border-violet-400 dark:peer-checked:border-violet-500 rounded-lg pointer-events-none" aria-hidden="true"></div>
                     </label>
@@ -52,7 +52,7 @@ export default function Onboarding01() {
                           <path className="text-violet-500" d="m12 10.856 9-5-8.514-4.73a1 1 0 0 0-.972 0L3 5.856l9 5Z" />
                           <path className="text-violet-300" d="m11 12.588-9-5V18a1 1 0 0 0 .514.874L11 23.588v-11Z" />
                         </svg>
-                        <span>I’m a freelance / contractor</span>
+                        <span>개발</span>
                       </div>
                       <div className="absolute inset-0 border-2 border-transparent peer-checked:border-violet-400 dark:peer-checked:border-violet-500 rounded-lg pointer-events-none" aria-hidden="true"></div>
                     </label>
@@ -62,13 +62,13 @@ export default function Onboarding01() {
                         <svg className="w-6 h-6 shrink-0 fill-current mr-4" viewBox="0 0 24 24">
                           <path className="text-violet-500" d="m12 10.856 9-5-8.514-4.73a1 1 0 0 0-.972 0L3 5.856l9 5Z" />
                         </svg>
-                        <span>I'm just getting started</span>
+                        <span>품질/신뢰성</span>
                       </div>
                       <div className="absolute inset-0 border-2 border-transparent peer-checked:border-violet-400 dark:peer-checked:border-violet-500 rounded-lg pointer-events-none" aria-hidden="true"></div>
                     </label>
                   </div>
                   <div className="flex items-center justify-between">
-                    <Link className="btn bg-gray-900 text-gray-100 hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-white ml-auto" href="/onboarding-02">Next Step -&gt;</Link>
+                    <Link className="btn bg-gray-900 text-gray-100 hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-white ml-auto" href="/onboarding-02">다음으로 -&gt;</Link>
                   </div>
                 </form>
 

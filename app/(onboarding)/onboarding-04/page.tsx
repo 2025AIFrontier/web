@@ -34,8 +34,8 @@ export default function Onboarding04() {
                     <circle className="text-green-500/20" cx="32" cy="32" r="32" />
                     <path className="text-green-700" d="M37.22 26.375a1 1 0 1 1 1.56 1.25l-8 10a1 1 0 0 1-1.487.082l-4-4a1 1 0 0 1 1.414-1.414l3.21 3.21 7.302-9.128Z" />
                   </svg>
-                  <h1 className="text-3xl text-gray-800 dark:text-gray-100 font-bold mb-8">Nice to have you, Acme Inc. 🙌</h1>
-                  <Link className="btn bg-gray-900 text-gray-100 hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-white" href="/dashboards">Go To Dashboard -&gt;</Link>
+                  <h1 className="text-3xl text-gray-800 dark:text-gray-100 font-bold mb-8"> 환영합니다!</h1>
+                  <Link className="btn bg-gray-900 text-gray-100 hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-white" href="/dashboards">AI와 함께해볼까요? -&gt;</Link>
                 </div>
 
               </div>

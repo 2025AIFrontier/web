@@ -2,8 +2,8 @@
   "version": 3,
   "sources": [],
   "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/mj/aifrontier/main/web/app/page.tsx"],"sourcesContent":["import { redirect } from 'next/navigation'\nimport { cookies } from 'next/headers'\n\nexport default async function Home() {\n  const cookieStore = await cookies()\n  const session = cookieStore.get('session')\n  \n  // 로그인된 상태면 대시보드로, 아니면 로그인 페이지로\n  if (session) {\n    redirect('/dashboard')\n  } else {\n    redirect('/signin')\n  }\n}\n"],"names":[],"mappings":";;;AAAA;AACA;AADA;;;AAGe,eAAe;IAC5B,MAAM,cAAc,MAAM,CAAA,GAAA,+HAAA,CAAA,UAAO,AAAD;IAChC,MAAM,UAAU,YAAY,GAAG,CAAC;IAEhC,+BAA+B;IAC/B,IAAI,SAAS;QACX,CAAA,GAAA,qLAAA,CAAA,WAAQ,AAAD,EAAE;IACX,OAAO;QACL,CAAA,GAAA,qLAAA,CAAA,WAAQ,AAAD,EAAE;IACX;AACF"}},
-    {"offset": {"line": 25, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
-    {"offset": {"line": 36, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
-    {"offset": {"line": 36, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///Users/mj/aifrontier/main/web/app/page.tsx"],"sourcesContent":["import { redirect } from 'next/navigation'\n\nexport default function Home() {\n  redirect('/dashboard')\n}\n"],"names":[],"mappings":";;;AAAA;AAAA;;AAEe,SAAS;IACtB,CAAA,GAAA,qLAAA,CAAA,WAAQ,AAAD,EAAE;AACX"}},
+    {"offset": {"line": 16, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 27, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
+    {"offset": {"line": 27, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
 }

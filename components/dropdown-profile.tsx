@@ -6,89 +6,88 @@ import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Menu, MenuButton, MenuItems, MenuItem, Transition } from '@headlessui/react'
 import UserAvatar from '@/public/images/user-avatar-32.png'
+import AccountSettingsModal from './account-settings-modal'
+import { getAuthData, clearAuthData } from '@/lib/auth-utils'
 
 export default function DropdownProfile({ align }: {
   align?: 'left' | 'right'
 }) {
   const router = useRouter()
   const [userEmail, setUserEmail] = useState<string>('User')
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
 
   useEffect(() => {
-    // Get user information from sessionStorage
-    const userData = sessionStorage.getItem('user')
-    if (userData) {
-      try {
-        const user = JSON.parse(userData)
-        // Display user email or username
-        setUserEmail(user.email || user.username || 'User')
-      } catch (e) {
-        console.error('Failed to parse user data:', e)
-      }
-    }
-    
-    // Also check localStorage as fallback
-    const email = localStorage.getItem('userEmail')
-    if (email && !userData) {
-      setUserEmail(email)
+    // Get user information using auth utils
+    const user = getAuthData()
+    if (user) {
+      // Display user id or 'User'
+      setUserEmail(user.id || 'User')
     }
   }, [])
 
   const handleSignOut = () => {
-    // Clear all storage
-    sessionStorage.removeItem('user')
-    sessionStorage.clear()
-    localStorage.removeItem('token')
-    localStorage.removeItem('userEmail')
-    localStorage.clear()
+    // Clear all auth data using utility function
+    clearAuthData()
     
-    // Clear cookies
-    document.cookie = 'user=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT'
+    // Also clear any other localStorage items
+    localStorage.clear()
     
     // Force reload to clear any cached state
     window.location.href = '/signin'
   }
   return (
-    <Menu as="div" className="relative inline-flex">
-      <MenuButton className="inline-flex justify-center items-center group">
-        <Image className="w-8 h-8 rounded-full" src={UserAvatar} width={32} height={32} alt="User" />
-        <div className="flex items-center truncate">
-          <span className="truncate ml-2 text-sm font-medium text-gray-600 dark:text-gray-100 group-hover:text-gray-800 dark:group-hover:text-white">{userEmail}</span>
-          <svg className="w-3 h-3 shrink-0 ml-1 fill-current text-gray-400 dark:text-gray-500" viewBox="0 0 12 12">
-            <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-          </svg>
-        </div>
-      </MenuButton>
-      <Transition
-        as="div"
-        className={`origin-top-right z-10 absolute top-full min-w-[11rem] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/60 py-1.5 rounded-lg shadow-lg overflow-hidden mt-1 ${align === 'right' ? 'right-0' : 'left-0'
-          }`}
-        enter="transition ease-out duration-200 transform"
-        enterFrom="opacity-0 -translate-y-2"
-        enterTo="opacity-100 translate-y-0"
-        leave="transition ease-out duration-200"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-gray-200 dark:border-gray-700/60">
-          <div className="font-medium text-gray-800 dark:text-gray-100">{userEmail}</div>
-          <div className="text-xs text-gray-500 dark:text-gray-400 italic">Administrator</div>
-        </div>
-        <MenuItems as="ul" className="focus:outline-hidden">
-          <MenuItem as="li">
-              <Link className="font-medium text-sm flex items-center py-1 px-3 text-violet-500" href="/settings/account">
+    <>
+      <Menu as="div" className="relative inline-flex">
+        <MenuButton className="inline-flex justify-center items-center group">
+          <Image className="w-8 h-8 rounded-full" src={UserAvatar} width={32} height={32} alt="User" />
+          <div className="flex items-center truncate">
+            <span className="truncate ml-2 text-sm font-medium text-gray-600 dark:text-gray-100 group-hover:text-gray-800 dark:group-hover:text-white">{userEmail}</span>
+            <svg className="w-3 h-3 shrink-0 ml-1 fill-current text-gray-400 dark:text-gray-500" viewBox="0 0 12 12">
+              <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+            </svg>
+          </div>
+        </MenuButton>
+        <Transition
+          as="div"
+          className={`origin-top-right z-10 absolute top-full min-w-[11rem] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/60 py-1.5 rounded-lg shadow-lg overflow-hidden mt-1 ${align === 'right' ? 'right-0' : 'left-0'
+            }`}
+          enter="transition ease-out duration-200 transform"
+          enterFrom="opacity-0 -translate-y-2"
+          enterTo="opacity-100 translate-y-0"
+          leave="transition ease-out duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-gray-200 dark:border-gray-700/60">
+            <div className="font-medium text-gray-800 dark:text-gray-100">{userEmail}</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400 italic">Administrator</div>
+          </div>
+          <MenuItems as="ul" className="focus:outline-hidden">
+            <MenuItem as="li">
+              <button 
+                className="font-medium text-sm flex items-center py-1 px-3 text-violet-500 w-full text-left hover:bg-gray-50 dark:hover:bg-gray-700/20"
+                onClick={() => setIsSettingsModalOpen(true)}
+              >
                 Settings
-              </Link>
-          </MenuItem>
-          <MenuItem as="li">
-            <button 
-              className="font-medium text-sm flex items-center py-1 px-3 text-violet-500 w-full text-left hover:bg-gray-50 dark:hover:bg-gray-700/20"
-              onClick={handleSignOut}
-            >
-              Sign Out
-            </button>
-          </MenuItem>
-        </MenuItems>
-      </Transition>
-    </Menu>
+              </button>
+            </MenuItem>
+            <MenuItem as="li">
+              <button 
+                className="font-medium text-sm flex items-center py-1 px-3 text-violet-500 w-full text-left hover:bg-gray-50 dark:hover:bg-gray-700/20"
+                onClick={handleSignOut}
+              >
+                Sign Out
+              </button>
+            </MenuItem>
+          </MenuItems>
+        </Transition>
+      </Menu>
+      
+      {/* Account Settings Modal */}
+      <AccountSettingsModal 
+        isOpen={isSettingsModalOpen} 
+        onClose={() => setIsSettingsModalOpen(false)} 
+      />
+    </>
   )
 }

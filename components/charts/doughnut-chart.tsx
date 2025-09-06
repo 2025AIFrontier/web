@@ -110,6 +110,55 @@ export default function DoughnutChart({
             ul.appendChild(li)
           })
         },
+      }, {
+        id: 'centerText',
+        beforeDraw: function(chart) {
+          const { ctx, width, height } = chart
+          ctx.restore()
+          
+          // Calculate total
+          const dataset = chart.data.datasets[0]
+          const total = dataset.data.reduce((sum: number, value: any) => sum + (typeof value === 'number' ? value : 0), 0)
+          
+          // Draw total in center
+          const centerX = width / 2
+          const centerY = height / 2 - 10
+          
+          ctx.font = 'bold 24px sans-serif'
+          ctx.fillStyle = darkMode ? '#f3f4f6' : '#111827'
+          ctx.textAlign = 'center'
+          ctx.textBaseline = 'middle'
+          ctx.fillText(`${total}`, centerX, centerY)
+          
+          ctx.font = '14px sans-serif'
+          ctx.fillStyle = darkMode ? '#9ca3af' : '#6b7280'
+          ctx.fillText('총 건수', centerX, centerY + 20)
+          
+          ctx.save()
+        }
+      }, {
+        id: 'dataLabels',
+        afterDatasetsDraw: function(chart) {
+          const { ctx } = chart
+          ctx.save()
+          
+          chart.data.datasets.forEach((dataset, i) => {
+            const meta = chart.getDatasetMeta(i)
+            meta.data.forEach((element: any, index: number) => {
+              const data = dataset.data[index]
+              const { x, y } = element.tooltipPosition()
+              
+              // Draw data value
+              ctx.fillStyle = '#ffffff'
+              ctx.font = 'bold 14px sans-serif'
+              ctx.textAlign = 'center'
+              ctx.textBaseline = 'middle'
+              ctx.fillText(`${data}건`, x, y)
+            })
+          })
+          
+          ctx.restore()
+        }
       }],
     })
     setChart(newChart)

@@ -138,7 +138,7 @@ const __TURBOPACK__default__export__ = {
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, x: __turbopack_external_require__, y: __turbopack_external_import__, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
-    "default": (()=>ReleaseNotes)
+    "default": (()=>ReleaseNote)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
@@ -151,47 +151,48 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$images$2f$user$2d$
 ;
 ;
 ;
-function ReleaseNotes() {
+function ReleaseNote() {
     const [activeFilter, setActiveFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('all');
-    const filters = [
-        {
-            id: 'all',
-            label: 'View All'
-        },
-        {
-            id: 'announcement',
-            label: '공지'
-        },
-        {
-            id: 'bugfix',
-            label: '버그'
-        }
-    ];
-    const posts = [
+    const releaseNoteData = [
         {
             id: 1,
-            date: '15 October, 2025',
-            title: 'Released version 1.0 🎉',
-            category: 'announcement',
-            categoryLabel: '공지',
-            categoryColor: 'bg-green-500/20 text-green-700',
-            author: 'AI Frontier Team',
+            date: '1 ,Oct. 2025',
+            title: 'Released version 1.0',
+            author: '관리자',
             authorImage: __TURBOPACK__imported__module__$5b$project$5d2f$public$2f$images$2f$user$2d$32$2d$07$2e$jpg$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$public$2f$images$2f$user$2d$32$2d$07$2e$jpg__$5b$app$2d$ssr$5d$__$28$static$2922$__$7d$__$5b$app$2d$ssr$5d$__$28$structured__image__object$2c$__ecmascript$29$__["default"],
+            type: 'update',
             content: [
-                '드디어 AI Frontier 플랫폼 버전 1.0이 정식 출시되었습니다! 이번 출시는 저희 팀이 지난 몇 달간 정성스럽게 개발해온 결과물입니다.',
-                'AI Frontier는 기업용 종합 관리 플랫폼으로, 직원 관리, 환율 정보, 예약 시스템, 그리고 강력한 관리 도구를 하나의 통합 환경에서 제공합니다.'
-            ],
-            list: [
-                '직원 관리 시스템: 조직도 시각화 및 연락처 관리',
-                '실시간 환율 정보: 주요 통화 환율 조회 및 계산기',
-                '스마트 예약 시스템: 회의실 및 차량 예약 관리',
-                '통합 관리 대시보드: PM2 프로세스 관리 및 시스템 모니터링',
-                '반응형 디자인: 데스크탑과 모바일 모든 환경 지원',
-                '다크모드: 사용자 선호에 맞는 테마 지원'
+                '기본 기능(TBD)으로 초기 출시',
+                '기여자 : 2025 AI Frontier(박철용p, 김보라p, 김세회p, 정승혁p, 최호진p)'
             ]
         }
     ];
-    const filteredPosts = activeFilter === 'all' ? posts : posts.filter((post)=>post.category === activeFilter);
+    const filteredData = releaseNoteData.filter((item)=>{
+        if (activeFilter === 'all') return true;
+        if (activeFilter === 'update') return item.type === 'update';
+        if (activeFilter === 'bugfix') return item.type === 'bugfix';
+        return true;
+    });
+    const getTypeLabel = (type)=>{
+        switch(type){
+            case 'update':
+                return '업데이트';
+            case 'bugfix':
+                return '버그 Fix';
+            default:
+                return type;
+        }
+    };
+    const getTypeStyles = (type)=>{
+        switch(type){
+            case 'update':
+                return 'bg-green-500/20 text-green-700';
+            case 'bugfix':
+                return 'bg-red-500/20 text-red-700';
+            default:
+                return 'bg-gray-500/20 text-gray-700';
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "relative bg-white dark:bg-gray-900 h-full",
         children: [
@@ -202,15 +203,15 @@ function ReleaseNotes() {
                         className: "mb-4 sm:mb-0",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                             className: "text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold",
-                            children: "Release Notes"
+                            children: "Release Note"
                         }, void 0, false, {
                             fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                            lineNumber: 56,
+                            lineNumber: 78,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                        lineNumber: 55,
+                        lineNumber: 77,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -220,18 +221,18 @@ function ReleaseNotes() {
                             children: "Add Entry"
                         }, void 0, false, {
                             fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                            lineNumber: 63,
+                            lineNumber: 85,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                        lineNumber: 60,
+                        lineNumber: 82,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                lineNumber: 52,
+                lineNumber: 74,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -243,35 +244,82 @@ function ReleaseNotes() {
                             className: "xl:pl-32 xl:-translate-x-16 mb-2",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                                 className: "flex flex-wrap -m-1",
-                                children: filters.map((filter)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                         className: "m-1",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                            onClick: ()=>setActiveFilter(filter.id),
-                                            className: `inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border transition ${activeFilter === filter.id ? 'border-transparent shadow-sm bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-800' : 'border-gray-200 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600 shadow-sm bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400'}`,
-                                            children: filter.label
+                                            onClick: ()=>setActiveFilter('all'),
+                                            className: `inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border shadow-sm transition ${activeFilter === 'all' ? 'border-transparent bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-800' : 'border-gray-200 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400'}`,
+                                            children: "전체"
                                         }, void 0, false, {
                                             fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                            lineNumber: 77,
-                                            columnNumber: 19
+                                            lineNumber: 98,
+                                            columnNumber: 17
                                         }, this)
-                                    }, filter.id, false, {
+                                    }, void 0, false, {
                                         fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                        lineNumber: 76,
-                                        columnNumber: 17
-                                    }, this))
-                            }, void 0, false, {
+                                        lineNumber: 97,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                        className: "m-1",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>setActiveFilter('update'),
+                                            className: `inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border shadow-sm transition ${activeFilter === 'update' ? 'border-transparent bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-800' : 'border-gray-200 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400'}`,
+                                            children: "업데이트"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
+                                            lineNumber: 110,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
+                                        lineNumber: 109,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                        className: "m-1",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>setActiveFilter('bugfix'),
+                                            className: `inline-flex items-center justify-center text-sm font-medium leading-5 rounded-full px-3 py-1 border shadow-sm transition ${activeFilter === 'bugfix' ? 'border-transparent bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-800' : 'border-gray-200 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400'}`,
+                                            children: "버그 Fix"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
+                                            lineNumber: 122,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
+                                        lineNumber: 121,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                lineNumber: 74,
+                                lineNumber: 96,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                            lineNumber: 73,
+                            lineNumber: 95,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "xl:-translate-x-16",
-                            children: filteredPosts.map((post)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
+                            children: filteredData.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "pt-6 pb-6 text-center text-gray-500 dark:text-gray-400",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    children: "선택한 필터에 해당하는 항목이 없습니다."
+                                }, void 0, false, {
+                                    fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
+                                    lineNumber: 140,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
+                                lineNumber: 139,
+                                columnNumber: 15
+                            }, this) : filteredData.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
                                     className: "pt-6",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "xl:flex",
@@ -280,16 +328,16 @@ function ReleaseNotes() {
                                                 className: "w-32 shrink-0",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "text-xs font-semibold uppercase text-gray-400 dark:text-gray-500 xl:leading-8",
-                                                    children: post.date
+                                                    children: item.date
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                    lineNumber: 98,
-                                                    columnNumber: 21
+                                                    lineNumber: 147,
+                                                    columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                lineNumber: 97,
-                                                columnNumber: 19
+                                                lineNumber: 146,
+                                                columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "grow pb-6 border-b border-gray-200 dark:border-gray-700/60",
@@ -298,11 +346,11 @@ function ReleaseNotes() {
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                                 className: "text-2xl text-gray-800 dark:text-gray-100 font-bold mb-3",
-                                                                children: post.title
+                                                                children: item.title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                                lineNumber: 102,
-                                                                columnNumber: 23
+                                                                lineNumber: 151,
+                                                                columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "flex flex-nowrap items-center space-x-2 mb-4",
@@ -315,148 +363,148 @@ function ReleaseNotes() {
                                                                                 href: "#0",
                                                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                                                                     className: "rounded-full border-2 border-white dark:border-gray-800 box-content",
-                                                                                    src: post.authorImage,
+                                                                                    src: item.authorImage,
                                                                                     width: 32,
                                                                                     height: 32,
-                                                                                    alt: post.author
+                                                                                    alt: item.author
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                                                    lineNumber: 106,
-                                                                                    columnNumber: 29
+                                                                                    lineNumber: 155,
+                                                                                    columnNumber: 31
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                                                lineNumber: 105,
-                                                                                columnNumber: 27
+                                                                                lineNumber: 154,
+                                                                                columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                                                                 className: "block text-sm font-semibold text-gray-800 dark:text-gray-100",
                                                                                 href: "#0",
-                                                                                children: post.author
+                                                                                children: item.author
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                                                lineNumber: 108,
-                                                                                columnNumber: 27
+                                                                                lineNumber: 157,
+                                                                                columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                                        lineNumber: 104,
-                                                                        columnNumber: 25
+                                                                        lineNumber: 153,
+                                                                        columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: "text-gray-400 dark:text-gray-600",
                                                                         children: "·"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                                        lineNumber: 112,
-                                                                        columnNumber: 25
+                                                                        lineNumber: 161,
+                                                                        columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: `text-xs inline-flex font-medium rounded-full text-center px-2.5 py-1 ${post.categoryColor}`,
-                                                                            children: post.categoryLabel
+                                                                            className: `text-xs inline-flex font-medium rounded-full text-center px-2.5 py-1 ${getTypeStyles(item.type)}`,
+                                                                            children: getTypeLabel(item.type)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                                            lineNumber: 114,
-                                                                            columnNumber: 27
+                                                                            lineNumber: 163,
+                                                                            columnNumber: 29
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                                        lineNumber: 113,
-                                                                        columnNumber: 25
+                                                                        lineNumber: 162,
+                                                                        columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                                lineNumber: 103,
-                                                                columnNumber: 23
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                        lineNumber: 101,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "space-y-3",
-                                                        children: [
-                                                            post.content.map((paragraph, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                                    children: paragraph
-                                                                }, index, false, {
-                                                                    fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                                    lineNumber: 122,
-                                                                    columnNumber: 25
-                                                                }, this)),
-                                                            post.list && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                                                className: "list-disc list-inside space-y-1",
-                                                                children: post.list.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                                                        children: item
-                                                                    }, index, false, {
-                                                                        fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                                        lineNumber: 127,
-                                                                        columnNumber: 29
-                                                                    }, this))
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                                lineNumber: 125,
+                                                                lineNumber: 152,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                        lineNumber: 120,
-                                                        columnNumber: 21
+                                                        lineNumber: 150,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "space-y-3",
+                                                        children: [
+                                                            item.content.map((paragraph, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                                    children: paragraph
+                                                                }, index, false, {
+                                                                    fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
+                                                                    lineNumber: 171,
+                                                                    columnNumber: 27
+                                                                }, this)),
+                                                            item.listItems && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                                                className: "list-disc list-inside space-y-1",
+                                                                children: item.listItems.map((listItem, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                                        children: listItem
+                                                                    }, index, false, {
+                                                                        fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
+                                                                        lineNumber: 176,
+                                                                        columnNumber: 31
+                                                                    }, this))
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
+                                                                lineNumber: 174,
+                                                                columnNumber: 27
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
+                                                        lineNumber: 169,
+                                                        columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                                lineNumber: 100,
-                                                columnNumber: 19
+                                                lineNumber: 149,
+                                                columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                        lineNumber: 96,
-                                        columnNumber: 17
+                                        lineNumber: 145,
+                                        columnNumber: 19
                                     }, this)
-                                }, post.id, false, {
+                                }, item.id, false, {
                                     fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                    lineNumber: 95,
-                                    columnNumber: 15
+                                    lineNumber: 144,
+                                    columnNumber: 17
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                            lineNumber: 93,
+                            lineNumber: 137,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "xl:pl-32 xl:-translate-x-16 mt-6",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$pagination$2d$classic$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                 fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                                lineNumber: 140,
+                                lineNumber: 190,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                            lineNumber: 139,
+                            lineNumber: 189,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                    lineNumber: 70,
+                    lineNumber: 92,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-                lineNumber: 69,
+                lineNumber: 91,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(alternative)/utility/changelog/page.tsx",
-        lineNumber: 49,
+        lineNumber: 71,
         columnNumber: 5
     }, this);
 }

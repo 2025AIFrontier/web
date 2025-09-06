@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import Datepicker from '@/components/datepicker'
-import ExchangeIntro from './exchange-intro'
-import ExchangeCard05 from './exchange-card-05'
-import ExchangeCard06 from './exchange-card-06'
-import StockCardTemplate from './stock-card-template'
+import ExchangeCardTop from './exchange-card-top'
+import ExchangeCardBottom1 from './exchange-card-bottom-1'
+import ExchangeCardBottom2 from './exchange-card-bottom-2'
+import ExchangeCardMiddle from './exchange-card-middle'
 import ExchangeCalculator from './exchange-calculator'
 
 interface ExchangeData {
@@ -162,11 +162,9 @@ export default function Exchange() {
         {/* Left: Title */}
         <div className="mb-4 sm:mb-0">
           <h1 className="text-2xl md:text-3xl text-gray-800 dark:text-gray-100 font-bold">환율 정보</h1>
-          {exchangeData && (
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-              마지막 업데이트: {new Date(exchangeData.date).toLocaleString('ko-KR')}
-            </p>
-          )}
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            해당 페이지는 한국수출입은행의 환율을 기준으로 하고 있습니다
+          </p>
         </div>
 
         {/* Right: Actions */}
@@ -194,11 +192,11 @@ export default function Exchange() {
       <div className="grid grid-cols-12 gap-6">
 
         {/* Page Intro */}
-        <ExchangeIntro />
+        <ExchangeCardTop />
         
         {/* Stock cards using template */}
         {stockData.map((stock, index) => (
-          <StockCardTemplate
+          <ExchangeCardMiddle
             key={index}
             ticker={stock.ticker}
             company={stock.company}
@@ -213,9 +211,9 @@ export default function Exchange() {
         ))}
         
         {/* Table (Recent Expenses) */}
-        <ExchangeCard05 />
+        <ExchangeCardBottom1 />
         {/* Table (Recent Earnings) */}
-        <ExchangeCard06 />
+        <ExchangeCardBottom2 />
 
       </div>
 

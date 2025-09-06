@@ -59,7 +59,7 @@ function FeedbackPanel() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 className: "text-2xl text-gray-800 dark:text-gray-100 font-bold mb-4",
-                                children: "Give Feedback"
+                                children: "VOC"
                             }, void 0, false, {
                                 fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
                                 lineNumber: 8,
@@ -67,7 +67,7 @@ function FeedbackPanel() {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "text-sm",
-                                children: "Our product depends on customer feedback to improve the overall experience!"
+                                children: "이용 중 개선이 필요한 내용을 입력해주세요"
                             }, void 0, false, {
                                 fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
                                 lineNumber: 9,
@@ -83,7 +83,7 @@ function FeedbackPanel() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                 className: "text-xl leading-snug text-gray-800 dark:text-gray-100 font-bold mb-6",
-                                children: "How likely would you recommend us to a friend or colleague?"
+                                children: "만족도 평가"
                             }, void 0, false, {
                                 fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
                                 lineNumber: 14,
@@ -232,14 +232,14 @@ function FeedbackPanel() {
                                         className: "w-full flex justify-between text-sm text-gray-500 dark:text-gray-400 italic mt-3",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: "Not at all"
+                                                children: "매우 나쁨"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
                                                 lineNumber: 47,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: "Extremely likely"
+                                                children: "매우 좋음"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
                                                 lineNumber: 48,
@@ -267,29 +267,20 @@ function FeedbackPanel() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                 className: "text-xl leading-snug text-gray-800 dark:text-gray-100 font-bold mb-5",
-                                children: "Tell us in words"
+                                children: "내용 입력"
                             }, void 0, false, {
                                 fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
                                 lineNumber: 55,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                className: "sr-only",
-                                htmlFor: "feedback",
-                                children: "Leave a feedback"
-                            }, void 0, false, {
-                                fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
-                                lineNumber: 57,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
                                 id: "feedback",
                                 className: "form-textarea w-full focus:border-gray-300",
                                 rows: 4,
-                                placeholder: "I really enjoy…"
+                                placeholder: "개선이 필요한 항목은 페이지의 URL을 함께 제출해주세요"
                             }, void 0, false, {
                                 fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
-                                lineNumber: 58,
+                                lineNumber: 57,
                                 columnNumber: 11
                             }, this)
                         ]
@@ -312,34 +303,34 @@ function FeedbackPanel() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 className: "btn dark:bg-gray-800 border-gray-200 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600 text-gray-800 dark:text-gray-300",
-                                children: "Cancel"
+                                children: "취소"
                             }, void 0, false, {
                                 fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
-                                lineNumber: 66,
+                                lineNumber: 65,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 className: "btn bg-gray-900 text-gray-100 hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-white ml-3",
-                                children: "Save Changes"
+                                children: "제출"
                             }, void 0, false, {
                                 fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
-                                lineNumber: 67,
+                                lineNumber: 66,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
-                        lineNumber: 65,
+                        lineNumber: 64,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
-                    lineNumber: 64,
+                    lineNumber: 63,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(default)/settings/feedback/feedback-panel.tsx",
-                lineNumber: 63,
+                lineNumber: 62,
                 columnNumber: 7
             }, this)
         ]

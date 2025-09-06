@@ -1,7 +1,7 @@
 import Sidebar from '@/components/ui/sidebar'
 import Header from '@/components/ui/header'
 
-export default function DefaultLayout({
+export default function LV1Layout({
   children,
 }: {
   children: React.ReactNode
@@ -9,7 +9,7 @@ export default function DefaultLayout({
   return (
     <div className="flex h-[100dvh] overflow-hidden">
 
-      {/* Sidebar */}
+      {/* Sidebar - Level 1 Menu */}
       <Sidebar />
 
       {/* Content area */}

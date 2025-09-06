@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import AuthHeader from '../auth-header'
 import AuthImage from '../auth-image'
+import { setAuthData, getAuthData } from '@/lib/auth-utils'
 
 export default function SignIn() {
   const [email, setEmail] = useState('')
@@ -12,6 +13,14 @@ export default function SignIn() {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+  
+  useEffect(() => {
+    // Check if already logged in
+    const user = getAuthData()
+    if (user) {
+      router.push('/dashboard')
+    }
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -50,11 +59,8 @@ export default function SignIn() {
         return
       }
 
-      // Set user in sessionStorage
-      sessionStorage.setItem('user', JSON.stringify({ id: user.id }))
-      
-      // Set cookie for middleware auth check
-      document.cookie = `user=${user.id}; path=/; max-age=86400`
+      // Set auth data (both sessionStorage and cookie)
+      setAuthData(user.id)
       
       // Redirect to dashboard
       router.push('/dashboard')
@@ -78,12 +84,12 @@ export default function SignIn() {
             <AuthHeader />
 
             <div className="max-w-sm mx-auto w-full px-4 py-8">
-              <h1 className="text-3xl text-gray-800 dark:text-gray-100 font-bold mb-6">Welcome back!</h1>
+              <h1 className="text-3xl text-gray-800 dark:text-gray-100 font-bold mb-6">로그인</h1>
               {/* Form */}
               <form onSubmit={handleSubmit}>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium mb-1" htmlFor="email">User ID</label>
+                    <label className="block text-sm font-medium mb-1" htmlFor="email">Knox ID</label>
                     <input 
                       id="email" 
                       className="form-input w-full" 
@@ -117,21 +123,21 @@ export default function SignIn() {
                 
                 <div className="flex items-center justify-between mt-6">
                   <div className="mr-1">
-                    <Link className="text-sm underline hover:no-underline" href="/reset-password">Forgot Password?</Link>
+                    <Link className="text-sm underline hover:no-underline" href="/reset-password">비밀번호 찾기</Link>
                   </div>
                   <button 
                     type="submit"
                     className="btn bg-gray-900 text-gray-100 hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-800 dark:hover:bg-white ml-3 disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={isLoading}
                   >
-                    {isLoading ? 'Signing In...' : 'Sign In'}
+                    {isLoading ? '로그인 중...' : '로그인'}
                   </button>
                 </div>
               </form>
               {/* Footer */}
               <div className="pt-5 mt-6 border-t border-gray-100 dark:border-gray-700/60">
                 <div className="text-sm">
-                  Don't you have an account? <Link className="font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400" href="/signup">Sign Up</Link>
+                   <Link className="font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400" href="/signup">신규 가입</Link>
                 </div>
                 {/* Warning */}
                 <div className="mt-5">
@@ -140,7 +146,7 @@ export default function SignIn() {
                       <path d="M10.28 1.28L3.989 7.575 1.695 5.28A1 1 0 00.28 6.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 1.28z" />
                     </svg>
                     <span className="text-sm">
-                      To support you during the pandemic super pro features are free until March 31st.
+                      신규 이용자는 관리자의 승인이 필요합니다
                     </span>
                   </div>
                 </div>

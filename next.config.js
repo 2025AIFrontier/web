@@ -6,6 +6,10 @@ const nextConfig = {
         source: '/api/postgrest/:path*',
         destination: 'http://localhost:3010/:path*',
       },
+      {
+        source: '/api/power/:path*',
+        destination: 'http://localhost:3012/api/power/:path*',
+      },
     ]
   },
 }

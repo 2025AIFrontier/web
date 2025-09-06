@@ -24,22 +24,9 @@ const pageRoutes = [
   { title: 'Exchange Dashboard', url: '/dashboard/exchange', keywords: ['exchange', 'fintech', 'finance', '환율', '금융', '핀테크', 'financial'] },
   { title: 'Calendar', url: '/calendar', keywords: ['calendar', 'schedule', '캘린더', '일정', 'date'] },
   
-  // E-commerce
-  { title: 'Customers', url: '/ecommerce/customers', keywords: ['customers', 'users', '고객', '사용자', 'clients'] },
-  { title: 'Orders', url: '/ecommerce/orders', keywords: ['orders', 'purchase', '주문', '구매', 'sales'] },
-  { title: 'Invoices', url: '/ecommerce/invoices', keywords: ['invoices', 'bill', '송장', '청구서', 'billing'] },
-  { title: 'Shop', url: '/ecommerce/shop', keywords: ['shop', 'products', '쇼핑', '상품', 'store'] },
-  { title: 'Shop 2', url: '/ecommerce/shop-2', keywords: ['shop2', 'products', '쇼핑2', '상품', 'store'] },
-  { title: 'Product', url: '/ecommerce/product', keywords: ['product', 'item', '제품', '아이템', 'detail'] },
-  { title: 'Cart', url: '/ecommerce/cart', keywords: ['cart', 'basket', '장바구니', 'shopping cart'] },
-  { title: 'Cart 2', url: '/ecommerce/cart-2', keywords: ['cart2', 'basket', '장바구니2'] },
-  { title: 'Cart 3', url: '/ecommerce/cart-3', keywords: ['cart3', 'basket', '장바구니3'] },
-  { title: 'Payment', url: '/ecommerce/pay', keywords: ['pay', 'payment', '결제', '지불', 'checkout'] },
-  
-  // Jobs
-  { title: 'Job Listing', url: '/ecommerce/jobs', keywords: ['jobs', 'career', '채용', '구인', 'employment'] },
-  { title: 'Job Post', url: '/ecommerce/jobs/post', keywords: ['job post', 'hiring', '채용공고', '구인공고'] },
-  { title: 'Company Profile', url: '/ecommerce/jobs/company', keywords: ['company', 'profile', '회사', '프로필', 'employer'] },
+  // humanNetwork
+  { title: '사외 담당자 조회', url: '/humanNetwork/humanNetwork_external', keywords: ['shop', 'external', '사외', '업체', '협력사', 'partners', 'shop2'] },
+  { title: '사내 담당자 조회', url: '/humanNetwork/humanNetwork_internal', keywords: ['jobs', 'internal', '사내', '직원', '담당자', 'employees'] },
   
   // Community
   { title: 'Community Feed', url: '/community/feed', keywords: ['feed', 'posts', '피드', '게시물', 'timeline'] },
@@ -52,10 +39,6 @@ const pageRoutes = [
   { title: 'Profile', url: '/community/profile', keywords: ['profile', 'user profile', '프로필', '사용자 프로필'] },
   
   // Settings
-  { title: 'Account Settings', url: '/settings/account', keywords: ['account', 'settings', '계정', '설정', 'preferences'] },
-  { title: 'Notifications', url: '/settings/notifications', keywords: ['notifications', 'alerts', '알림', '알림설정'] },
-  { title: 'Apps Settings', url: '/settings/apps', keywords: ['apps', 'integrations', '앱', '연동', 'connections'] },
-  { title: 'Billing', url: '/settings/billing', keywords: ['billing', 'subscription', '결제', '구독', 'payment'] },
   { title: 'Feedback', url: '/settings/feedback', keywords: ['feedback', 'support', '피드백', '지원', 'help'] },
   
   // Auth
@@ -64,11 +47,10 @@ const pageRoutes = [
   { title: 'Reset Password', url: '/reset-password', keywords: ['reset', 'password', '비밀번호', '재설정', 'forgot'] },
   
   // Utility
-  { title: 'Roadmap', url: '/utility/roadmap', keywords: ['roadmap', 'plan', '로드맵', '계획'] },
   { title: 'FAQs', url: '/utility/faqs', keywords: ['faq', 'help', '자주묻는질문', '도움말', 'questions'] },
   { title: 'Empty State', url: '/utility/empty-state', keywords: ['empty', 'blank', '비어있음', '빈상태'] },
   { title: '404', url: '/utility/404', keywords: ['404', 'not found', '찾을수없음', 'error'] },
-  { title: 'Changelog', url: '/utility/changelog', keywords: ['changelog', 'updates', '변경사항', '업데이트'] },
+  { title: 'Release Note', url: '/utility/releaseNote', keywords: ['release note', 'updates', '변경사항', '업데이트', '릴리즈'] },
   
   // Components Library
   { title: 'Buttons', url: '/components-library/button', keywords: ['button', 'buttons', '버튼', 'click'] },
@@ -500,18 +482,6 @@ export default function SearchModal({
                             <path d="M0 4a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V4zm2 0v8h12V4H2zm1 1l5 3 5-3v1.5L8 9.5 3 6.5V5z" />
                           </svg>
                           <span>Messages</span>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          className="flex items-center p-2 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700/20 rounded-lg"
-                          href="/settings/account"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          <svg className="fill-current text-gray-400 shrink-0 mr-3" width="16" height="16" viewBox="0 0 16 16">
-                            <path d="M10.5 1a.5.5 0 01.5.5v4a.5.5 0 01-.5.5h-4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5h4zM11 0H6a1.5 1.5 0 00-1.5 1.5v4A1.5 1.5 0 006 7h4a1.5 1.5 0 001.5-1.5v-4A1.5 1.5 0 0011 0zM4.5 9a.5.5 0 01.5.5v4a.5.5 0 01-.5.5h-4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5h4zM5 8H1a1.5 1.5 0 00-1.5 1.5v4A1.5 1.5 0 001 15h4a1.5 1.5 0 001.5-1.5v-4A1.5 1.5 0 005 8zm6 1a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H8a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5h3zm0-1H8a1.5 1.5 0 00-1.5 1.5v4A1.5 1.5 0 008 15h3a1.5 1.5 0 001.5-1.5v-4A1.5 1.5 0 0011 8z" />
-                          </svg>
-                          <span>Settings</span>
                         </Link>
                       </li>
                     </ul>

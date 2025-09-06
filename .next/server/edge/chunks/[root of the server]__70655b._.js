@@ -28,37 +28,25 @@ __turbopack_esm__({
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$api$2f$server$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_import__("[project]/node_modules/next/dist/esm/api/server.js [middleware] (ecmascript) <module evaluation>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$spec$2d$extension$2f$response$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/esm/server/web/spec-extension/response.js [middleware] (ecmascript)");
 ;
-// 로그인이 필요 없는 public 경로들
-const publicPaths = [
-    '/signin',
-    '/signup',
-    '/reset-password'
-];
-const authPaths = [
-    '/signin',
-    '/signup',
-    '/reset-password'
-];
 function middleware(request) {
-    const { pathname } = request.nextUrl;
-    // API 경로는 통과
-    if (pathname.startsWith('/api/')) {
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$spec$2d$extension$2f$response$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__["NextResponse"].next();
+    const pathname = request.nextUrl.pathname;
+    // Public paths that don't require authentication
+    const publicPaths = [
+        '/signin',
+        '/signup',
+        '/reset-password'
+    ];
+    // Check if the current path is public
+    const isPublicPath = publicPaths.some((path)=>pathname.startsWith(path));
+    // Check for user session
+    const userCookie = request.cookies.get('user');
+    // If user is not authenticated and trying to access protected route
+    if (!isPublicPath && !userCookie) {
+        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$spec$2d$extension$2f$response$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__["NextResponse"].redirect(new URL('/signin', request.url));
     }
-    // 세션 쿠키 확인
-    const session = request.cookies.get('session');
-    // 로그인 된 사용자가 auth 페이지 접근 시 대시보드로 리다이렉트
-    if (session && authPaths.some((path)=>pathname.startsWith(path))) {
-        const url = request.nextUrl.clone();
-        url.pathname = '/dashboard';
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$spec$2d$extension$2f$response$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__["NextResponse"].redirect(url);
-    }
-    // 로그인 안 된 사용자가 보호된 페이지 접근 시 로그인 페이지로
-    if (!session && !publicPaths.some((path)=>pathname.startsWith(path))) {
-        const url = request.nextUrl.clone();
-        url.pathname = '/signin';
-        url.searchParams.set('from', pathname);
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$spec$2d$extension$2f$response$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__["NextResponse"].redirect(url);
+    // If user is authenticated and trying to access auth pages
+    if (isPublicPath && userCookie) {
+        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$spec$2d$extension$2f$response$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__["NextResponse"].redirect(new URL('/dashboard', request.url));
     }
     return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$esm$2f$server$2f$web$2f$spec$2d$extension$2f$response$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__["NextResponse"].next();
 }
@@ -66,12 +54,12 @@ const config = {
     matcher: [
         /*
      * Match all request paths except for the ones starting with:
+     * - api (API routes)
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      * - public folder
-     * - api routes
-     */ '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)'
+     */ '/((?!api|_next/static|_next/image|favicon.ico|.*\\..*|images).*)'
     ]
 };
 }}),

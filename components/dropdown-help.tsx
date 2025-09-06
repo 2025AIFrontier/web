@@ -1,12 +1,16 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { Menu, MenuButton, MenuItems, MenuItem, Transition } from '@headlessui/react'
+import FeedbackModal from './utility/feedback-modal'
 
 export default function DropdownHelp({ align }: {
   align?: 'left' | 'right'
 }) {
+  const [feedbackModalOpen, setFeedbackModalOpen] = useState(false)
   return (
+    <>
     <Menu as="div" className="relative inline-flex">
       {({ open }) => (
         <>
@@ -14,7 +18,7 @@ export default function DropdownHelp({ align }: {
             className={`w-8 h-8 flex items-center justify-center hover:bg-gray-100 lg:hover:bg-gray-200 dark:hover:bg-gray-700/50 dark:lg:hover:bg-gray-800 rounded-full ${open && 'bg-gray-200 dark:bg-gray-800'
               }`}
           >
-            <span className="sr-only">Need help?</span>
+            <span className="sr-only">도움말</span>
             <svg
               className="fill-current text-gray-500/80 dark:text-gray-400/80"
               width={16}
@@ -40,7 +44,7 @@ export default function DropdownHelp({ align }: {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase pt-1.5 pb-2 px-3">Need help?</div>
+            <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase pt-1.5 pb-2 px-3">도움말</div>
             <MenuItems as="ul" className="focus:outline-hidden">
               <MenuItem as="li">
                 {({ active }) => (
@@ -65,11 +69,25 @@ export default function DropdownHelp({ align }: {
               </MenuItem>
               <MenuItem as="li">
                 {({ active }) => (
-                  <Link className={`font-medium text-sm flex items-center py-1 px-3 ${active ? 'text-violet-600 dark:text-violet-400' : 'text-violet-500'}`} href="#0">
+                  <button
+                    onClick={() => setFeedbackModalOpen(true)}
+                    className={`font-medium text-sm flex items-center py-1 px-3 w-full text-left ${active ? 'text-violet-600 dark:text-violet-400' : 'text-violet-500'}`}
+                  >
                     <svg className="w-3 h-3 fill-current text-violet-500 shrink-0 mr-2" viewBox="0 0 12 12">
                       <path d="M11.854.146a.5.5 0 00-.525-.116l-11 4a.5.5 0 00-.015.934l4.8 1.921 1.921 4.8A.5.5 0 007.5 12h.008a.5.5 0 00.462-.329l4-11a.5.5 0 00-.116-.525z" />
                     </svg>
-                    <span>Contact us</span>
+                    <span>VOC</span>
+                  </button>
+                )}
+              </MenuItem>
+              <MenuItem as="li">
+                {({ active }) => (
+                  <Link className={`font-medium text-sm flex items-center py-1 px-3 ${active ? 'text-violet-600 dark:text-violet-400' : 'text-violet-500'}`} href="/utility/releaseNote">
+                    <svg className="w-3 h-3 fill-current text-violet-500 shrink-0 mr-2" viewBox="0 0 12 12">
+                      <path d="M6 0a6 6 0 100 12A6 6 0 006 0zm0 10a4 4 0 110-8 4 4 0 010 8z" />
+                      <path d="M5.5 3v3.5h3v1h-4v-4.5h1z" />
+                    </svg>
+                    <span>Release Note</span>
                   </Link>
                 )}
               </MenuItem>
@@ -78,5 +96,12 @@ export default function DropdownHelp({ align }: {
         </>
       )}
     </Menu>
+    
+    {/* Feedback Modal */}
+    <FeedbackModal 
+      isOpen={feedbackModalOpen}
+      onClose={() => setFeedbackModalOpen(false)}
+    />
+    </>
   )
 }

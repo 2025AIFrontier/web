@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import { useCalendarContext } from './calendar-context'
 
 export const CalendarProperties = () => {
-  const monthNames: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-  const dayNames: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  const monthNames: string[] = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+  const dayNames: string[] = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
   const {
     today,
     currentMonth,

@@ -1,10 +1,8 @@
 import Image from 'next/image'
-import UserImage01 from '@/public/images/avatar-01.jpg'
-import UserImage02 from '@/public/images/avatar-02.jpg'
-import UserImage03 from '@/public/images/avatar-03.jpg'
-import UserImage04 from '@/public/images/avatar-04.jpg'
-import UserImage05 from '@/public/images/avatar-05.jpg'
-import UserImage06 from '@/public/images/avatar-06.jpg'
+import UserImage01 from '@/public/images/user-32-01.jpg'
+import UserImage02 from '@/public/images/user-32-02.jpg'
+import UserImage04 from '@/public/images/user-32-04.jpg'
+import UserImage05 from '@/public/images/user-32-05.jpg'
 
 export default function ForumRightContent() {
   return (
@@ -19,180 +17,68 @@ export default function ForumRightContent() {
           {/* Blocks */}
           <div className="space-y-4">
 
-            {/* Block 1 */}
+            {/* Block 1 - Who to follow */}
             <div className="bg-white dark:bg-gray-800 p-4 rounded-xl">
-              <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-4">Forum Meetups</div>
-              <ul>
-                {/* Event 1 */}
-                <li className="relative pb-4 last-of-type:pb-0">
-                  <div className="pl-6">
-                    <div className="text-xs font-medium uppercase text-violet-600 mb-0.5">Mon 27 Dec</div>
-                    <div className="text-sm mb-2">
-                      <a className="font-medium text-gray-800 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white" href="#0">
-                        Silicon Valley Bootstrapper Breakfast Online for 2024
-                      </a>
-                    </div>
-                    {/* Avatars */}
-                    <div className="flex items-center space-x-2">
-                      <div className="flex -space-x-3 -ml-0.5">
-                        <Image
-                          className="rounded-full border-2 border-white dark:border-gray-800 box-content"
-                          src={UserImage02}
-                          width={28}
-                          height={28}
-                          alt="User 02"
-                        />
-                        <Image
-                          className="rounded-full border-2 border-white dark:border-gray-800 box-content"
-                          src={UserImage03}
-                          width={28}
-                          height={28}
-                          alt="User 03"
-                        />
-                        <Image
-                          className="rounded-full border-2 border-white dark:border-gray-800 box-content"
-                          src={UserImage04}
-                          width={28}
-                          height={28}
-                          alt="User 04"
-                        />
+              <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-4">Who to follow</div>
+              <ul className="space-y-3">
+                <li>
+                  <div className="flex items-center justify-between">
+                    <div className="grow flex items-center">
+                      <div className="relative mr-3">
+                        <Image className="w-8 h-8 rounded-full" src={UserImage02} width={32} height={32} alt="User 02" />
                       </div>
-                      <div className="text-xs font-medium text-gray-400 dark:text-gray-500 italic">+22</div>
+                      <div className="truncate">
+                        <span className="text-sm font-medium text-gray-800 dark:text-gray-100">Elly Boutin</span>
+                      </div>
                     </div>
-                  </div>
-                  {/* Timeline element */}
-                  <div aria-hidden="true">
-                    <div className="absolute top-0.5 -bottom-1 left-0.5 ml-px w-0.5 bg-gray-200 dark:bg-gray-700" />
-                    <div className="absolute top-0.5 left-0 -ml-0.5 w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-500 border-2 border-white dark:border-gray-800" />
+                    <button className="btn-xs text-xs border-gray-200 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600 text-gray-800 dark:text-gray-300 px-2.5 py-1 rounded-full shadow-none">
+                      Follow
+                    </button>
                   </div>
                 </li>
-                {/* Event 2 */}
-                <li className="relative pb-4 last-of-type:pb-0">
-                  <div className="pl-6">
-                    <div className="text-xs font-medium uppercase text-violet-600 mb-0.5">Mon 27 Dec</div>
-                    <div className="text-sm mb-2">
-                      <a className="font-medium text-gray-800 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white" href="#0">
-                        New York &amp; New Jersey Virtual Retreat
-                      </a>
-                    </div>
-                    {/* Avatars */}
-                    <div className="flex items-center space-x-2">
-                      <div className="flex -space-x-3 -ml-0.5">
-                        <Image
-                          className="rounded-full border-2 border-white dark:border-gray-800 box-content"
-                          src={UserImage01}
-                          width={28}
-                          height={28}
-                          alt="User 01"
-                        />
-                        <Image
-                          className="rounded-full border-2 border-white dark:border-gray-800 box-content"
-                          src={UserImage04}
-                          width={28}
-                          height={28}
-                          alt="User 04"
-                        />
-                        <Image
-                          className="rounded-full border-2 border-white dark:border-gray-800 box-content"
-                          src={UserImage05}
-                          width={28}
-                          height={28}
-                          alt="User 05"
-                        />
+                <li>
+                  <div className="flex items-center justify-between">
+                    <div className="grow flex items-center">
+                      <div className="relative mr-3">
+                        <Image className="w-8 h-8 rounded-full" src={UserImage04} width={32} height={32} alt="User 04" />
                       </div>
-                      <div className="text-xs font-medium text-gray-400 dark:text-gray-500 italic">+132</div>
+                      <div className="truncate">
+                        <span className="text-sm font-medium text-gray-800 dark:text-gray-100">Rich Harris</span>
+                      </div>
                     </div>
-                  </div>
-                  {/* Timeline element */}
-                  <div aria-hidden="true">
-                    <div className="absolute top-0.5 -bottom-1 left-0.5 ml-px w-0.5 bg-gray-200 dark:bg-gray-700" />
-                    <div className="absolute top-0.5 left-0 -ml-0.5 w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-500 border-2 border-white dark:border-gray-800" />
+                    <button className="btn-xs text-xs border-gray-200 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600 text-gray-800 dark:text-gray-300 px-2.5 py-1 rounded-full shadow-none">
+                      Follow
+                    </button>
                   </div>
                 </li>
-                {/* Event 3 */}
-                <li className="relative pb-4 last-of-type:pb-0">
-                  <div className="pl-6">
-                    <div className="text-xs font-medium uppercase text-violet-600 mb-0.5">Mon 29 Dec</div>
-                    <div className="text-sm mb-2">
-                      <a className="font-medium text-gray-800 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white" href="#0">
-                        The World of AI and Machine Learning - Open Chat
-                      </a>
-                    </div>
-                    {/* Avatars */}
-                    <div className="flex items-center space-x-2">
-                      <div className="flex -space-x-3 -ml-0.5">
-                        <Image
-                          className="rounded-full border-2 border-white dark:border-gray-800 box-content"
-                          src={UserImage06}
-                          width={28}
-                          height={28}
-                          alt="User 06"
-                        />
-                        <Image
-                          className="rounded-full border-2 border-white dark:border-gray-800 box-content"
-                          src={UserImage03}
-                          width={28}
-                          height={28}
-                          alt="User 03"
-                        />
-                        <Image
-                          className="rounded-full border-2 border-white dark:border-gray-800 box-content"
-                          src={UserImage01}
-                          width={28}
-                          height={28}
-                          alt="User 01"
-                        />
+                <li>
+                  <div className="flex items-center justify-between">
+                    <div className="grow flex items-center">
+                      <div className="relative mr-3">
+                        <Image className="w-8 h-8 rounded-full" src={UserImage05} width={32} height={32} alt="User 05" />
                       </div>
-                      <div className="text-xs font-medium text-gray-400 dark:text-gray-500 italic">+12</div>
+                      <div className="truncate">
+                        <span className="text-sm font-medium text-gray-800 dark:text-gray-100">Mary Porzio</span>
+                      </div>
                     </div>
-                  </div>
-                  {/* Timeline element */}
-                  <div aria-hidden="true">
-                    <div className="absolute top-0.5 -bottom-1 left-0.5 ml-px w-0.5 bg-gray-200 dark:bg-gray-700" />
-                    <div className="absolute top-0.5 left-0 -ml-0.5 w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-500 border-2 border-white dark:border-gray-800" />
+                    <button className="btn-xs text-xs border-gray-200 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600 text-gray-800 dark:text-gray-300 px-2.5 py-1 rounded-full shadow-none">
+                      Follow
+                    </button>
                   </div>
                 </li>
-                {/* Event 4 */}
-                <li className="relative pb-4 last-of-type:pb-0">
-                  <div className="pl-6">
-                    <div className="text-xs font-medium uppercase text-violet-600 mb-0.5">Mon 29 Dec</div>
-                    <div className="text-sm mb-2">
-                      <a className="font-medium text-gray-800 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white" href="#0">
-                        NYC Code &amp; Coffee 2.0 @ Freehold Brooklyn
-                      </a>
-                    </div>
-                    {/* Avatars */}
-                    <div className="flex items-center space-x-2">
-                      <div className="flex -space-x-3 -ml-0.5">
-                        <Image
-                          className="rounded-full border-2 border-white dark:border-gray-800 box-content"
-                          src={UserImage03}
-                          width={28}
-                          height={28}
-                          alt="User 03"
-                        />
-                        <Image
-                          className="rounded-full border-2 border-white dark:border-gray-800 box-content"
-                          src={UserImage05}
-                          width={28}
-                          height={28}
-                          alt="User 05"
-                        />
-                        <Image
-                          className="rounded-full border-2 border-white dark:border-gray-800 box-content"
-                          src={UserImage04}
-                          width={28}
-                          height={28}
-                          alt="User 04"
-                        />
+                <li>
+                  <div className="flex items-center justify-between">
+                    <div className="grow flex items-center">
+                      <div className="relative mr-3">
+                        <Image className="w-8 h-8 rounded-full" src={UserImage01} width={32} height={32} alt="User 01" />
                       </div>
-                      <div className="text-xs font-medium text-gray-400 dark:text-gray-500 italic">+17</div>
+                      <div className="truncate">
+                        <span className="text-sm font-medium text-gray-800 dark:text-gray-100">Brian Lovin</span>
+                      </div>
                     </div>
-                  </div>
-                  {/* Timeline element */}
-                  <div aria-hidden="true">
-                    <div className="absolute top-0.5 -bottom-1 left-0.5 ml-px w-0.5 bg-gray-200 dark:bg-gray-700" />
-                    <div className="absolute top-0.5 left-0 -ml-0.5 w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-500 border-2 border-white dark:border-gray-800" />
+                    <button className="btn-xs text-xs border-gray-200 dark:border-gray-700/60 hover:border-gray-300 dark:hover:border-gray-600 text-gray-800 dark:text-gray-300 px-2.5 py-1 rounded-full shadow-none">
+                      Follow
+                    </button>
                   </div>
                 </li>
               </ul>
@@ -201,74 +87,49 @@ export default function ForumRightContent() {
               </div>
             </div>
 
-            {/* Block 2 */}
+            {/* Block 2 - Trends for you */}
             <div className="bg-white dark:bg-gray-800 p-4 rounded-xl">
-              <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-4">Popular Stories</div>
+              <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase mb-4">Trends for you</div>
               <ul className="space-y-3">
                 <li>
                   <div className="text-sm mb-1">
                     <a className="font-medium text-gray-800 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white" href="#0">
-                      I built and sold 2 small SaaS products and quit my job in the last two years — AMA
+                      Tracking your website traffic on launch day 📈
                     </a>
                   </div>
-                  <div className="text-xs text-gray-500">
-                    <a className="font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400" href="#0">
-                      markusj
-                    </a>{' '}
-                    · 2d · 312 comments
-                  </div>
+                  <div className="text-xs text-gray-500">248 comments</div>
                 </li>
                 <li>
                   <div className="text-sm mb-1">
                     <a className="font-medium text-gray-800 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white" href="#0">
-                      Besides Product Hunt, where else should I promote my new project? 🤔
+                      Freemium model questions
                     </a>
                   </div>
-                  <div className="text-xs text-gray-500">
-                    <a className="font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400" href="#0">
-                      katemerlu
-                    </a>{' '}
-                    · 2h · 7 comments
-                  </div>
+                  <div className="text-xs text-gray-500">47 comments</div>
                 </li>
                 <li>
                   <div className="text-sm mb-1">
                     <a className="font-medium text-gray-800 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white" href="#0">
-                      Which are the main channels you use to drive traffic to your website? 📈
+                      Slack and Community
                     </a>
                   </div>
-                  <div className="text-xs text-gray-500">
-                    <a className="font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400" href="#0">
-                      sophiestar
-                    </a>{' '}
-                    · 3d · 66 comments
-                  </div>
+                  <div className="text-xs text-gray-500">24 comments</div>
                 </li>
                 <li>
                   <div className="text-sm mb-1">
                     <a className="font-medium text-gray-800 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white" href="#0">
-                      Failed for the past 12 years as a tech entrepreneur. My key takeaways.
+                      Who owns user onboarding in your company?
                     </a>
                   </div>
-                  <div className="text-xs text-gray-500">
-                    <a className="font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400" href="#0">
-                      ekuplu89
-                    </a>{' '}
-                    · 4h · 14 comments
-                  </div>
+                  <div className="text-xs text-gray-500">17 comments</div>
                 </li>
                 <li>
                   <div className="text-sm mb-1">
                     <a className="font-medium text-gray-800 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white" href="#0">
-                      How to build a following on Twitter as a founder - A guide to growing your audience 🚀
+                      Questions from a very confused Web3 startup founder 🤔
                     </a>
                   </div>
-                  <div className="text-xs text-gray-500">
-                    <a className="font-medium text-violet-500 hover:text-violet-600 dark:hover:text-violet-400" href="#0">
-                      molliehacks
-                    </a>{' '}
-                    · 3d · 32 comments
-                  </div>
+                  <div className="text-xs text-gray-500">9 comments</div>
                 </li>
               </ul>
               <div className="mt-4">
